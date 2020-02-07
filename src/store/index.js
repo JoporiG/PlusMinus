@@ -14,7 +14,7 @@ export default new Vuex.Store({
     addDelta(state, delta){
       let brr = state.arr.map(v => v);
       for(let i = 0; i < brr.length; i++){
-        for(let j = 0; j < brr.length; j++){
+        for(let j = 0; j < brr[i].length; j++){
           if(!(i == j && j == 0))
             brr[i][j] += delta;
         }
@@ -55,9 +55,24 @@ export default new Vuex.Store({
         brr[i][arr[1]] = a;
       }
       state.arr = brr;
+    },
+    addTable(state){
+      let brr = state.arr;
+      for(let i = 0; i < state.arr.length; i++){
+        brr[i].push(1);
+      }
+      state.arr = brr;
+    },
+    addLine(state){
+      let brr = state.arr;
+      brr.push(state.arr[0]);
+      state.arr = brr;
     }
   },
   actions: {
+    AddTable(ctx){
+      ctx.commit('addTable')
+    },
     addOne(ctx){
       ctx.commit('addDelta', 1)
     },
@@ -69,6 +84,9 @@ export default new Vuex.Store({
     },
     SwaP2(ctx, a){
       ctx.commit("Swap2", a)
+    },
+    AddLine(ctx){
+      ctx.commit("addLine")
     }
   },
   getters:{

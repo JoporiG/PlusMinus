@@ -17,6 +17,9 @@
     <input type="text" v-model="table1">
     <input type="text" v-model="table2">
     <button @click="Swap2">Swap</button>
+    <br/>
+    <button @click="AddTable">AddTable</button>
+    <button @click="AddLine">AddLine</button>
   </div>
 </template>
 
@@ -47,6 +50,12 @@ export default {
     },
     Swap2(){
       this.$store.dispatch("SwaP2", [this.table1 - 1, this.table2 - 1]);
+    },
+    AddTable(){
+      this.$store.dispatch("AddTable");
+    },
+    AddLine(){
+      this.$store.dispatch("AddLine");
     }
   }
 }
