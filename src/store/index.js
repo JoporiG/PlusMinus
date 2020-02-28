@@ -65,7 +65,12 @@ export default new Vuex.Store({
     },
     addLine(state){
       let brr = state.arr;
-      brr.push(state.arr[0]);
+      let crr = [];
+      crr.length = brr[0].length;
+      for(let i = 0; i < crr.length; i++){
+        crr[i] = 1;
+      }
+      brr.push(crr);
       state.arr = brr;
     }
   },
